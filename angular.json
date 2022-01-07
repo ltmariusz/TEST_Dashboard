@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -7,11 +10,27 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
-        },
-        "@schematics/angular:application": {
+          "style": "scss",
+          "skipTests": true
+          },
+          "@schematics/angular:class": {
+          "skipTests": true
+          },
+          "@schematics/angular:directive": {
+          "skipTests": true
+          },
+          "@schematics/angular:guard": {
+          "skipTests": true
+          },
+          "@schematics/angular:pipe": {
+          "skipTests": true
+          },
+          "@schematics/angular:service": {
+          "skipTests": true
+          },
+          "@schematics/angular:application": {
           "strict": true
-        }
+          }
       },
       "root": "",
       "sourceRoot": "src",
@@ -99,7 +118,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/@nebular/theme/styles/prebuilt/corporate.scss"
             ],
             "scripts": []
           }

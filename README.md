@@ -1,4 +1,9 @@
 # PHUPZaproszenie
+## Co Zainstalować 
+Node.js
+Angular/cli
+npm i 
+ng serve -o  
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
 

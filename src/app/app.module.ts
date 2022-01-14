@@ -11,7 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,7 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'corporate' }),
     NbEvaIconsModule,
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

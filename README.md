@@ -4,6 +4,14 @@ Node.js
 Angular/cli
 npm i 
 ng serve -o  
+reactive forms 
+componenty input output
+
+## stworzenie komponentu
+otworz terminal w folderze (np component)  ng g m "nazwa", ng g c "nazwa"
+
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserLoginData } from 'src/app/components/login/login/login.component';
 
 @Component({
   selector: 'app-user-login-page',
@@ -9,7 +10,15 @@ export class UserLoginPageComponent implements OnInit {
 
   constructor() { }
 
+  loading: boolean = false;
+  customError: string = "";
+
+
   ngOnInit(): void {
+  }
+
+  getData(user: UserLoginData | undefined){
+    console.log(user)
   }
 
 }

@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ThrowStmt } from '@angular/compiler';
+export interface UserForgotData{
+  emailf:string
+}
 
 @Component({
   selector: 'app-forgot-password',
@@ -13,6 +16,15 @@ export class ForgotPasswordComponent implements OnInit {
   profileFormF = new FormGroup({
     emailf: new FormControl('',[Validators.required, Validators.email])
   })
+
+  @Input()
+  loading: boolean = false;
+  
+  @Input()
+  customError: string ="";
+
+  @Output()
+  forgotClick: EventEmitter<UserForgotData> = new EventEmitter()
 
   constructor(private _location: Location) { }
 

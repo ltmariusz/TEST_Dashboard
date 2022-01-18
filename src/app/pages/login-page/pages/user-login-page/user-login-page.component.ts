@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserLoginData } from 'src/app/components/login/login/login.component';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-login-page',
@@ -8,7 +9,7 @@ import { UserLoginData } from 'src/app/components/login/login/login.component';
 })
 export class UserLoginPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   loading: boolean = false;
   customError: string = "";
@@ -18,7 +19,11 @@ export class UserLoginPageComponent implements OnInit {
   }
 
   getData(user: UserLoginData | undefined){
-    console.log(user)
+    if(user){
+      console.log(user)
+    }else{
+      this.customError="Niepoprawne dane"
+    }
   }
 
 }

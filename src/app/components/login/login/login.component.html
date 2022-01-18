@@ -3,13 +3,18 @@
     <nb-card-body>
         <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
             <label class="label">Email:</label> <br>
-            <input class="break" type="email" nbInput fullWidth status="primary" placeholder="Email" formControlName="email">
-            <div class="emptyi" *ngIf="profileForm.get('email')?.hasError('email') && showError">Nieprawidłowy adress email</div>
-            <div class="emptyi" *ngIf="profileForm.get('email')?.hasError('required') && showError">Pole musi być wypełnione</div>
+            <input class="break" type="email" nbInput fullWidth status="primary" placeholder="Email"
+                formControlName="email">
+            <div class="emptyi" *ngIf="profileForm.get('email')?.hasError('email') && showError">Nieprawidłowy adress
+                email</div>
+            <div class="emptyi" *ngIf="profileForm.get('email')?.hasError('required') && showError">Pole musi być
+                wypełnione</div>
 
             <label class="label">Hasło:</label> <br>
             <input type="password" nbInput fullWidth status="primary" placeholder="Hasło" formControlName="password">
-            <div class="emptyi" *ngIf="profileForm.get('password')?.hasError('required') && showError">Pole musi być wypełnione</div>
+            <div class="emptyi" *ngIf="profileForm.get('password')?.hasError('required') && showError">Pole musi być
+                wypełnione</div>
+            <div class="emptyi" *ngIf="customError">{{customError}}</div>
 
             <div class="break"><a [routerLink]="['forgot-password',]"> Nie pamiętam hasła</a></div>
             <div id="bLogin"><button nbButton status="primary" type="submit">Zaloguj</button></div>

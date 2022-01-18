@@ -36,8 +36,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit() {
-      console.log(this.loading)
-      console.log(this.customError)
+    this.showError = false
+    this.customError = ""
 
     if (this.profileForm.invalid) {
       this.showError = true;
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
       this.loginClick.emit({
         email: this.profileForm.get("email")!.value,
         password:this.profileForm.get("password")!.value
-      })
+     })
     }
   }
 }

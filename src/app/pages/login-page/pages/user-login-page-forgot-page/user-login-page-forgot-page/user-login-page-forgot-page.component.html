@@ -1,3 +1,4 @@
 <div class=row>
-<app-forgot-password class="col-12 offset-sm-3 col-sm-6 offset-md-2 col-md-8 col-xl-4 offset-xl-4"> </app-forgot-password>
+    <app-forgot-password [loading]="loading" [customError]="customError" (forgotClick)="getData($event)"
+        class="col-12 offset-sm-3 col-sm-6 offset-md-2 col-md-8 col-xl-4 offset-xl-4"></app-forgot-password>
 </div>

@@ -8,6 +8,7 @@ import { NbThemeModule, NbLayoutModule, NbCardModule, NbStepperModule, NbButtonM
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NbEvaIconsModule,
 
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

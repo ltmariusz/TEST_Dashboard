@@ -12,11 +12,6 @@ export interface UserForgotData{
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements OnInit {
-  showErrorF: boolean = false;
-  profileFormF = new FormGroup({
-    emailf: new FormControl('',[Validators.required, Validators.email])
-  })
-
   @Input()
   loading: boolean = false;
   
@@ -25,6 +20,14 @@ export class ForgotPasswordComponent implements OnInit {
 
   @Output()
   forgotClick: EventEmitter<UserForgotData> = new EventEmitter()
+
+
+  showErrorF: boolean = false;
+  profileFormF = new FormGroup({
+    emailf: new FormControl('',[Validators.required, Validators.email])
+  })
+
+
 
   constructor(private _location: Location) { }
 
@@ -36,8 +39,15 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   onSubmitf(){
+    this.customError= ""
+    this.showErrorF= false
     if (this.profileFormF.invalid){
       this.showErrorF=true;
+    }
+    else{
+      this.forgotClick.emit({
+        emailf: this.profileFormF.get("emailf")!.value
+      })
     }
   
   }

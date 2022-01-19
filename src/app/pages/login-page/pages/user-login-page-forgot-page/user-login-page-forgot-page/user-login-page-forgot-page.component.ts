@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserForgotData } from 'src/app/components/forgot-password/forgot-password/forgot-password.component';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-login-page-forgot-page',
@@ -8,7 +9,7 @@ import { UserForgotData } from 'src/app/components/forgot-password/forgot-passwo
 })
 export class UserLoginPageForgotPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   loading: boolean = false;
   customError: string = "";
@@ -16,11 +17,24 @@ export class UserLoginPageForgotPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getData(user: UserForgotData | undefined){
-    if(user){
+  getData(user: UserForgotData | undefined) {
+    if (user) {
       console.log(user)
-    }else{
-      this.customError="Niepoprawne dane"
+      this.loading = true
+
+      this.userService.loginf(user.emailf)
+        .then(res => {
+          console.log("Udało się")
+        })
+        .catch(e => {
+          this.customError = e
+        })
+        .finally(() => {
+          this.loading = false;
+        })
+
+    } else {
+      this.customError = "Niepoprawne dane"
     }
   }
 

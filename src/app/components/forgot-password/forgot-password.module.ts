@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { NbButtonModule, NbCardModule, NbIconModule, NbInputModule } from '@nebular/theme';
+import { NbButtonModule, NbCardModule, NbIconModule, NbInputModule, NbSpinnerModule } from '@nebular/theme';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
@@ -21,7 +21,8 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     NgbModule,
     NbIconModule,
-    RouterModule
+    RouterModule,
+    NbSpinnerModule
   ],
   exports: [
     ForgotPasswordComponent

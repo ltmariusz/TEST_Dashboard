@@ -7,20 +7,60 @@ export class UserService {
 
   constructor() { }
 
-  login(email: string, password:string):Promise<string>{
+
+  /**
+   * Laduje email i hasło
+   * @param email 
+   * @param password 
+   * @returns opdpowiedź serwera 
+   */
+  login(email: string, password: string): Promise<string> {
     return new Promise((resolve, reject) => {
       let result = true
 
-      if(result){
-        setTimeout(function(){
+      if (result) {
+
+        setTimeout(function () {
           resolve("Ready")
         }, 5000);
-      }else{
+      } else {
         reject("Not working")
       }
     })
   }
-  Forgot(){
 
+  /**
+   * Laduje zapomniany email
+   * @param emailf 
+   * @returns 
+   */
+  loginf(emailf: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+      let result = true
+
+      if (result) {
+
+        setTimeout(function () {
+          resolve("Ready")
+        }, 5000);
+      } else {
+        reject("Not working")
+      }
+    })
   }
+  // console.log("przed")
+  // login("a@a.pl", "abc123")
+  // .then(res => {
+  //   console.log(res)
+  // }).catch(e => {
+  //   console.log(e)
+  // })
+  // console.log("po")
+
+
+  // login("a@a","sss"){
+
+  // }
+
+
 }

@@ -1,6 +1,6 @@
 <nb-card>
     <nb-card-header> Zaloguj się</nb-card-header>
-    <nb-card-body>
+    <nb-card-body [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerSize="giant"> 
         <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
             <label class="label">Email:</label> <br>
             <input class="break" type="email" nbInput fullWidth status="primary" placeholder="Email"

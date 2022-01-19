@@ -21,6 +21,19 @@ export class UserLoginPageComponent implements OnInit {
   getData(user: UserLoginData | undefined){
     if(user){
       console.log(user)
+      this.loading = true
+      //spinner
+      this.userService.login(user.email, user.password)
+      .then(res => {
+        console.log("Udało się")
+      })
+      .catch(e => {
+        this.customError = e
+      })
+      .finally(() => {
+        this.loading = false
+      })
+
     }else{
       this.customError="Niepoprawne dane"
     }

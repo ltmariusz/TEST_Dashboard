@@ -21,12 +21,10 @@ export class ForgotPasswordComponent implements OnInit {
   @Output()
   forgotClick: EventEmitter<UserForgotData> = new EventEmitter()
 
-
   showErrorF: boolean = false;
   profileFormF = new FormGroup({
     emailf: new FormControl('',[Validators.required, Validators.email])
   })
-
 
 
   constructor(private _location: Location) { }

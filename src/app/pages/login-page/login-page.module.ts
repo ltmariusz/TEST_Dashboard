@@ -12,7 +12,8 @@ const routes: Routes = [
   {path: '', component: LoginPageComponent, children:[
     {path: '', component: UserLoginPageComponent},
     {path: 'forgot-password', loadChildren: () => import('./pages/user-login-page-forgot-page/user-login-page-forgot-page.module').then(m => m.UserLoginPageForgotPageModule)}
-  ]}
+  ],}
+  
 
  ];
 

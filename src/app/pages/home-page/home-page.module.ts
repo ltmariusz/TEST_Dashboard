@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RouterModule, Routes } from '@angular/router';
-import { NbIconModule, NbLayoutModule, NbUserModule } from '@nebular/theme';
+import { NbAccordionModule, NbButtonModule, NbIconModule, NbLayoutModule, NbSidebarModule, NbUserModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
  const routes: Routes =[
@@ -21,7 +21,10 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbLayoutModule,
     NbUserModule,
     NbEvaIconsModule,
-    NbIconModule
+    NbIconModule,
+    NbSidebarModule,
+    NbAccordionModule,
+    NbButtonModule
   ]
 })
 export class HomePageModule { }

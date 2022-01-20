@@ -8,14 +8,29 @@ import { NbSidebarService } from '@nebular/theme';
 })
 export class HomePageComponent implements OnInit {
 
+  menuShow: boolean = false
 
   // tu skonczyles  https://akveo.github.io/nebular/docs/components/layout/overview#nblayoutheadercomponent
   constructor(private sidebarService: NbSidebarService) { }
 
   ngOnInit(): void {
   }
-  toggle() {
-    this.sidebarService.toggle(true);
-    return false;
+
+
+  /**
+   * Menu przycisk
+   */
+   showMenu() {
+    console.log(this.menuShow)
+    this.menuShow = !this.menuShow
+    this.sidebarService.toggle(false, 'navi')
+    console.log(this.menuShow)
   }
+
+  // toggle(){
+  //   this.sidebarService.toggle(false, 'navi')
+  //   console.log("ruch")
+  // }
+
+
 }

@@ -27,7 +27,7 @@ const routes: Routes = [
     NbLayoutModule,
     RouterModule.forChild(routes),
     LoginModule,
-    ForgotPasswordModule
+    ForgotPasswordModule,
   ]
 })
 export class LoginPageModule { }

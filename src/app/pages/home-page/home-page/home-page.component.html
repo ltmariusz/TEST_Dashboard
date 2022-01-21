@@ -1,17 +1,22 @@
 <nb-layout>
-    
+
     <nb-layout-header fixed>
         <div id="menuUpLeft">
-            <button id="menuB" nbButton status="basic" (click)="showMenu()" ><nb-icon icon="menu-outline" ></nb-icon></button>
+            <button id="menuB" nbButton status="basic" (click)="showMenu()">
+                <nb-icon icon="menu-outline"></nb-icon>
+            </button>
             Menu
         </div>
         <div id="menuUpRight">
-            <nb-user size="large" name="John Doe" title="Engineer" color="#cccccc">
+            <nb-user size="large" name="John Doe" title="Engineer" color="#cccccc" [nbContextMenu]="items">
             </nb-user>
         </div>
     </nb-layout-header>
+    
+    <nb-sidebar tag="sidebar">
+        <app-navigation></app-navigation>
+    </nb-sidebar>
 
-    <nb-sidebar tag="navi"></nb-sidebar>
     <nb-layout-column>
         <router-outlet></router-outlet>
     </nb-layout-column>

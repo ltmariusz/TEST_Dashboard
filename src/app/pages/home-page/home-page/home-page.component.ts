@@ -23,9 +23,14 @@ export class HomePageComponent implements OnInit {
    showMenu() {
     console.log(this.menuShow)
     this.menuShow = !this.menuShow
-    this.sidebarService.toggle(false, 'navi')
+    this.sidebarService.toggle(false, 'sidebar')
     console.log(this.menuShow)
   }
+
+  items = [
+    { title: 'Zmień hasło'},
+    { title: 'Logout'}
+  ]
 
   // toggle(){
   //   this.sidebarService.toggle(false, 'navi')

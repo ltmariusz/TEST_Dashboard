@@ -10,7 +10,7 @@ export class HomePageComponent implements OnInit {
 
   menuShow: boolean = false
 
-  // tu skonczyles  https://akveo.github.io/nebular/docs/components/layout/overview#nblayoutheadercomponent
+
   constructor(private sidebarService: NbSidebarService) { }
 
   ngOnInit(): void {
@@ -28,8 +28,13 @@ export class HomePageComponent implements OnInit {
   }
 
   items = [
-    { title: 'Zmień hasło'},
-    { title: 'Logout'}
+    { title: 'Zmień hasło',
+      link: '/pages/password',
+      icon: 'settings-2-outline'},
+    { icon: 'log-out-outline',
+      title: 'Logout',
+      link: '',
+      }
   ]
 
   // toggle(){

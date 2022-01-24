@@ -17,36 +17,39 @@ export class NavigationComponent implements OnInit {
     {
       title: 'Zaproszenia',
       expanded: false,
+      icon: 'email-outline',
       children: [
         {
           title: 'Nowe Zaproszenia',
-          link: '/pages/invate/add'
+          link: 'invate/add',
+          icon: 'plus'
         },
         {
           title: 'Oczekujące',
+          link: 'invate/pending',
+          icon: 'flip-2'
         },
       ],
     },
     {
       title: 'Admin',
       expanded: false,
+      icon: 'person-outline',
       children: [
         {
-          title: 'Dodawanie'
+          title: 'Dodawanie',
+          link: 'admin/add',
+          icon: 'person-add-outline'
         },
         {
           title: 'Lista',
-          expanded: false,
-          children:[
-            {
-              title: 'Edycja'
-            }
-          ]
+          link: 'admin/list',
+          icon: 'list'
         }
       ]
     },
   ];
-
+ 
 
 
 }

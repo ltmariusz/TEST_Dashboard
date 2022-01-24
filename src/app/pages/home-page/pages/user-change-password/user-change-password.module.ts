@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InvitePendingPageComponent } from './invite-pending-page/invite-pending-page.component';
+import { UserChangePasswordComponent } from './user-change-password/user-change-password.component';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes =[
-  {path: '', component: InvitePendingPageComponent}
+const routes: Routes = [
+  {path: '', component: UserChangePasswordComponent}
 ]
 
 @NgModule({
   declarations: [
-    InvitePendingPageComponent,
+    UserChangePasswordComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
   ]
 })
-export class InvitePendingPageModule { }
+export class UserChangePasswordModule { }

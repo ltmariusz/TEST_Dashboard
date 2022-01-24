@@ -9,10 +9,13 @@ import { NavigationModule } from 'src/app/components/navigation/navigation.modul
 
  const routes: Routes =[
   {path: '', component: HomePageComponent, children:[
-    { path: 'invate/add', loadChildren: () => import('./pages/invite-page/invite-page/pages/invite-add-page/invite-add-page.module').then(m => m.InviteAddPageModule) },
-    { path: 'zaproszenie/oczekujace', loadChildren: () => import('./pages/invite-page/invite-page/pages/invite-pending-page/invite-pending-page.module').then(m => m.InvitePendingPageModule) },
-    { path: 'admin/add', loadChildren: () => import('./pages/admin-page/admin-page/pages/admin-add-page/admin-add-page.module').then(m => m.AdminAddPageModule) },
-    { path: 'admin/list/edit', loadChildren: () => import('./pages/admin-page/admin-page/pages/admin-list-page/admin-list-page.module').then(m => m.AdminListPageModule) }
+    // { path: 'invate/add', loadChildren: () =>     import('./pages/invite-page/invite-page/pages/invite-add-page/invite-add-page.module').then(m => m.InviteAddPageModule) },
+    // { path: 'invate/pending', loadChildren: () => import('./pages/invite-page/invite-page/pages/invite-pending-page/invite-pending-page.module').then(m => m.InvitePendingPageModule) },
+    { path: 'invate', loadChildren: () => import('./pages/invite-page/invite-page.module').then(m=>m.InvitePageModule)},
+    // { path: 'admin/add', loadChildren: () => import('./pages/admin-page/admin-page/pages/admin-add-page/admin-add-page.module').then(m => m.AdminAddPageModule) },
+    // { path: 'admin/list/edit', loadChildren: () => import('./pages/admin-page/admin-page/pages/admin-list-page/admin-list-page.module').then(m => m.AdminListPageModule) },
+    { path: 'admin', loadChildren: () => import('./pages/admin-page/admin-page.module').then(m => m.AdminPageModule)},
+    { path: 'password', loadChildren: () => import('./pages/user-change-password/user-change-password.module').then(m => m.UserChangePasswordModule)}
   ]}
  ]
 

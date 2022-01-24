@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './navigation/navigation.component';
-import { NbCardModule, NbMenuModule } from '@nebular/theme';
+import { NbCardModule, NbIconModule, NbMenuModule } from '@nebular/theme';
 
 
 
@@ -12,7 +12,8 @@ import { NbCardModule, NbMenuModule } from '@nebular/theme';
   imports: [
     CommonModule,
     NbMenuModule,
-    NbCardModule
+    NbCardModule,
+    NbIconModule
   ],
   exports: [
     NavigationComponent

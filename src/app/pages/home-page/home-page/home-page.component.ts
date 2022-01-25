@@ -31,10 +31,9 @@ export class HomePageComponent implements OnInit {
     { title: 'Zmień hasło',
       link: '/pages/password',
       icon: 'settings-2-outline'},
-    { icon: 'log-out-outline',
-      title: 'Logout',
+    { title: 'Logout',
       link: '',
-      }
+      icon: 'log-out-outline'}
   ]
 
   // toggle(){

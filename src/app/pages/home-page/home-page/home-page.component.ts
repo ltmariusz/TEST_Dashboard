@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbSidebarService } from '@nebular/theme';
+import { UserControlerService } from 'src/app/services/global/user-controller.service';
 
 @Component({
   selector: 'app-home-page',
@@ -11,11 +12,22 @@ export class HomePageComponent implements OnInit {
   menuShow: boolean = false
 
 
-  constructor(private sidebarService: NbSidebarService) { }
+  constructor(
+    private sidebarService: NbSidebarService,
+    private userControlerService: UserControlerService) { }
 
   ngOnInit(): void {
   }
 
+  getUserName():string{
+    let name = this.userControlerService.getName()
+    let surname = this.userControlerService.getSurname()
+    if (name && surname) {
+      return name +" "+ surname
+    }else{
+      return "--"
+    }
+  }
 
   /**
    * Menu przycisk

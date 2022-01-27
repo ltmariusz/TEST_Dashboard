@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UserAuthGuard } from './guards/user-auth.guard';
 
 const routes: Routes = [
   {
@@ -9,12 +10,18 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'pages',
+    canLoad: [UserAuthGuard],
+    canActivateChild: [UserAuthGuard],
     loadChildren: () => import('./pages/home-page/home-page.module').then(m => m.HomePageModule)
   },
+  {
+    path: '**', redirectTo: '/login', pathMatch: 'full'
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [UserAuthGuard]
 })
 export class AppRoutingModule { }

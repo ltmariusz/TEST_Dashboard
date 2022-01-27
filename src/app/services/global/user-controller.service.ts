@@ -1,6 +1,6 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Data } from '@angular/router';
-import { LoginStatus } from '../login.service';
 
 
 @Injectable({
@@ -8,23 +8,43 @@ import { LoginStatus } from '../login.service';
 })
 export class UserControlerService {
   //zminnne
-  name?: string
-  surname?: string
-  email?: string
-  token?: string 
-  time?: Data
+  private name?: string
+  private surname?: string
+  private email?: string
+  private token?: string 
+  private time?: Data
   
   constructor() { }
 
-
-
-
+  //getData który będzie zwracał dane 
 
 //funkcja
-SetData(name: string, surname: string, email: string, token: string, time: string){
-  if(LoginStatus.SUCCESS)
-return 
+setShortData(name: string, surname: string, email: string){
+  this.name = name
+  this.surname = surname
+  this.email = email
 }
-//console.log(surname)
+
+setData(name: string, surname: string, email: string, token: string, time: Date){
+  this.name = name
+  this.surname = surname
+  this.email = email
+  this.token = token
+  this.time = time
+}
+
+getName():string | undefined{
+  return this.name
+}
+
+getSurname():string | undefined{
+  return this.surname
+}
+
+getToken():string | undefined{
+return this.token
+}
+
+
 
 }

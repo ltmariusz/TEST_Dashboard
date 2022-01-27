@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserLoginData } from 'src/app/components/login/login/login.component';
 import { LoginService, LoginStatus } from 'src/app/services/login.service';
@@ -13,7 +14,12 @@ export class UserLoginPageComponent implements OnInit, OnDestroy {
   loading: boolean = false;
   customError: string = "";
 
-  constructor(private loginService: LoginService) { }
+
+  
+  constructor(
+    private loginService: LoginService,
+    private router: Router
+  ) { }
   
   ngOnDestroy(): void {
     this.loginPrecessSubscription?.unsubscribe()
@@ -26,6 +32,13 @@ export class UserLoginPageComponent implements OnInit, OnDestroy {
   getData(user: UserLoginData | undefined){
     if(user){
       this.loginService.login(user.email, user.password)
+      .then(res => {
+        this.router.navigateByUrl('/pages')
+
+      })
+      .catch(e =>{
+        this.customError = e
+      })
     }else{
       this.customError="Niepoprawne dane"
     }
@@ -41,12 +54,14 @@ export class UserLoginPageComponent implements OnInit, OnDestroy {
           break;
         case LoginStatus.LOADING:
           console.log(LoginStatus.LOADING)
+          this.loading = true
           break;
         case LoginStatus.SUCCESS:
           console.log(res)
           break;
         case LoginStatus.ERROR:
           console.log(res)
+          this.loading=false
           break;
       }
     })

@@ -1,6 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { delay, Observable, of } from 'rxjs';
 
 export interface PostLoginResponseBody{
   token: string,
@@ -27,10 +27,10 @@ export class UserRestService {
         time: new Date()
       },
       status: 200,
-    }))
+    })).pipe(delay(200))
   }
 
-  getUserData():Observable<HttpResponse<GetUserResponseData>>{
+  getUserData(token:string):Observable<HttpResponse<GetUserResponseData>>{
     return of(new HttpResponse({
       body:{
         name: "Arkadiusz",
@@ -38,6 +38,6 @@ export class UserRestService {
         email: "arkadiusz.bryska@daw-systems.pl",
       },
       status: 200,
-    }))
+    })).pipe(delay(200))
   }
 }

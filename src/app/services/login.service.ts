@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, lastValueFrom } from 'rxjs';
-import {UserRestService} from './rest-controllers/user-rest.service';
+import { LoginComponent } from '../components/login/login/login.component';
+import { UserControlerService } from './global/user-controller.service';
+import { UserRestService } from './rest-controllers/user-rest.service';
+
 
 export enum LoginStatus{
  SUCCESS,
@@ -16,7 +19,7 @@ export enum LoginStatus{
 })
 export class LoginService {
 
-  loginProcessStatusSubject = new BehaviorSubject(LoginStatus.PENDING)
+  loginProcessStatusSubject = new BehaviorSubject(LoginStatus.PENDING)  
 
   private _loginProcessStatus: LoginStatus = LoginStatus.PENDING
   private get loginProcessStatus():LoginStatus{
@@ -29,7 +32,10 @@ export class LoginService {
 
   
 
-  constructor(private userRestService: UserRestService ) { }
+  constructor(
+    private userRestService: UserRestService, 
+    private userControlerService: UserControlerService,
+    ) { }
 
   async login(email: string, password: string){
     if(this.loginProcessStatus != LoginStatus.PENDING){return}
@@ -37,11 +43,26 @@ export class LoginService {
     //pobieranie informacji i zakończyć sukcesem
     try{
       let result = await lastValueFrom(this.userRestService.postLogin(email,password))
-    
-    }catch{
+      if (result.body == null) {
+        this.loginProcessStatus = LoginStatus.ERROR
+        return
+      }
+      let result2 = await lastValueFrom(this.userRestService.getUserData(result.body.token))
+      if(result2.body == null){
+        this.loginProcessStatus = LoginStatus.ERROR
+        return
+      }
 
+      this.userControlerService.setData(result2.body.name, result2.body.surnmae, result2.body.email, result.body.token, result.body.time)
+      this.loginProcessStatus = LoginStatus.SUCCESS   
+    }catch (error){
+      this.loginProcessStatus = LoginStatus.ERROR
+      throw error
     }
     
   }
 
+  sprawdz(){
+  console.log(this)
+  }
 }

@@ -41,6 +41,10 @@ getSurname():string | undefined{
   return this.surname
 }
 
+getEmail():string | undefined {
+  return this.email
+}
+
 getToken():string | undefined{
 return this.token
 }

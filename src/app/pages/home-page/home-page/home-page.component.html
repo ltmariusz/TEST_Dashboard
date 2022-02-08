@@ -1,19 +1,19 @@
 <nb-layout>
 
-    <nb-layout-header fixed>
+    <nb-layout-header>
         <div id="menuUpLeft">
             <button id="menuB" nbButton status="basic" (click)="showMenu()">
-                <nb-icon icon="menu-outline"></nb-icon>
+                <nb-icon id="menuBI" icon="menu-outline"></nb-icon>
             </button>
-            Menu
+            Zaproszenia
         </div>
         <div id="menuUpRight">
-            <nb-user size="large" [name]="getUserName()" title="Engineer" color="#cccccc" [nbContextMenu]="items">
+            <nb-user [size]="size" [name]="getUserName()" [showTitle]="true" [showTitle]="userShowTitle" [title]="getUserEmail()" color="#cccccc" [nbContextMenu]="items">
             </nb-user>
         </div>
     </nb-layout-header>
     
-    <nb-sidebar tag="sidebar">
+    <nb-sidebar tag="sidebar" [state]="menuShow" [fixed]="menuFixed">
         <app-navigation></app-navigation>
     </nb-sidebar>
 

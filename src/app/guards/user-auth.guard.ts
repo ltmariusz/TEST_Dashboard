@@ -44,7 +44,7 @@ constructor(
       try {
         var token = this.userControlerService.getToken()
         if(token == null){
-          // nawiduj do login page
+          // nawiguj do login page
           this.router.navigateByUrl('/login')
           return resolve(false)
         }

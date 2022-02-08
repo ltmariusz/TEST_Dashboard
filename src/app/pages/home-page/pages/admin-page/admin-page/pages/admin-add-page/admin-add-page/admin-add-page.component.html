@@ -1,1 +1,49 @@
 <p>admin-add-page works!</p>
+
+<nb-card>
+    <nb-card-header>Dodaj Nowego urzytkownika</nb-card-header>
+    <!-- <nb-card-body [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerSize="giant">  -->
+    <nb-card-body nbSpinnerStatus="primary" nbSpinnerSize="giant"> 
+        
+        <!-- <form [formGroup]="profileForm" (ngSubmit)="onSubmit()"> -->
+        <form>
+            <label class="label">Imie:</label>
+            <input class="break" type="name" nbInput fullWidth status="info">
+            <br>
+
+            <label class="label">Nazwisko:</label>
+            <input class="break" type="surname" nbInput fullWidth status="info">
+            <br>
+            
+            <label class="label">Email:</label>
+            <input class="break" type="email" nbInput fullWidth status="info">
+            <br>
+
+            <label class="label">Stanowisko:</label>
+            <input class="break" type="workplace" nbInput fullWidth status="info">
+            <br>
+            <label class="label">Typ:</label>
+            <input class="break" type="type" nbInput fullWidth status="info">
+            <button type="submit">Dodaj</button>
+
+
+            <!-- <label class="label">Email:</label> <br>
+            <input class="break" type="email" nbInput fullWidth status="primary" placeholder="Email"
+                formControlName="email">
+            <div class="emptyi" *ngIf="profileForm.get('email')?.hasError('email') && showError">Nieprawidłowy adress
+                email</div>
+            <div class="emptyi" *ngIf="profileForm.get('email')?.hasError('required') && showError">Pole musi być
+                wypełnione</div>
+
+            <label class="label">Hasło:</label> <br>
+            <input type="password" nbInput fullWidth status="primary" placeholder="Hasło" formControlName="password">
+            <div class="emptyi" *ngIf="profileForm.get('password')?.hasError('required') && showError">Pole musi być
+                wypełnione</div>
+            <div class="emptyi" *ngIf="customError">{{customError}}</div>
+
+            <div class="break"><a [routerLink]="['forgot-password',]"> Nie pamiętam hasła</a></div>
+            <div id="bLogin"><button nbButton status="primary" type="submit">Zaloguj</button></div>
+            [disabled]="!profileForm.valid" -->
+        </form>
+    </nb-card-body>
+</nb-card>

@@ -1,13 +1,47 @@
+//Lewa część menu
 #menuUpLeft{
     float: left;
-    font-size:x-large;
+    font-size: 40px;
+    font-weight: bolder;
+    font-family: Arial;
 };
+
+#menuBI{
+    width: 40px;
+    height: 40px;
+};
+
+#menuB{
+    border: 0px
+};
+
+@media only screen and (max-width: 600px) {
+    #menuUpLeft{
+        font-size: 20px;
+        font-weight: bolder;
+        font-family: Arial;
+    };
+    #menuBI{
+        width: 20px;
+        height: 20px;
+    };
+};
+
+
+
+
+
+//Prawa część menu
 #menuUpRight{
     position: absolute;
     right: 0;
     float: right;
     padding: 1%;
 };
-#menuB{
-    border: 0px
+
+
+
+
+nb-layout-header{
+    font-size: 5px;
 }

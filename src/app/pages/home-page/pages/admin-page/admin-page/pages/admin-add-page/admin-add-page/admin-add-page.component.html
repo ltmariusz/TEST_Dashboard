@@ -1,30 +1,43 @@
-<p>admin-add-page works!</p>
-
-<nb-card>
-    <nb-card-header>Dodaj Nowego urzytkownika</nb-card-header>
+<!-- <nb-card class="col-12 offset-sm-3 col-sm-6 offset-md-2 col-md-8 col-xl-4 offset-xl-4" > -->
+<nb-card class="col-12 offset-sm-1 col-sm-10 offset-md-2 col-md-8 offset-lg-2 col-lg-8 offset-xl-2 col-xl-8 " >
+    <nb-card-header>Dodaj Nowego użytkownika</nb-card-header>
     <!-- <nb-card-body [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerSize="giant">  -->
     <nb-card-body nbSpinnerStatus="primary" nbSpinnerSize="giant"> 
         
         <!-- <form [formGroup]="profileForm" (ngSubmit)="onSubmit()"> -->
-        <form>
-            <label class="label">Imie:</label>
-            <input class="break" type="name" nbInput fullWidth status="info">
+        <!-- <form [formGroup]="profileForm"> -->
+        <form [formGroup]="profileeForm" (ngSubmit)="onSubmit()">
+            <label class="label">Imię:</label>
+            <input class="break" type="name" nbInput fullWidth status="info" formControlName="firstName">
+            <div class="redError" *ngIf="profileeForm.get('firstName')?.hasError('required') && showError">Pole musi być wypełmione</div>
             <br>
 
             <label class="label">Nazwisko:</label>
-            <input class="break" type="surname" nbInput fullWidth status="info">
+            <input class="break" type="surname" nbInput fullWidth status="info" formControlName="surname">
+            <div class="redError" *ngIf="profileeForm.get('surname')?.hasError('required') && showError">Pole musi być wypełmione</div>
             <br>
             
             <label class="label">Email:</label>
-            <input class="break" type="email" nbInput fullWidth status="info">
+            <input class="break" type="email" nbInput fullWidth status="info" formControlName="email">
+            <div class="redError" *ngIf="profileeForm.get('email')?.hasError('email') && showError">Błędny email</div>
+            <div class="redError" *ngIf="profileeForm.get('email')?.hasError('required') && showError">Pole musi być wypełmione</div>
             <br>
 
             <label class="label">Stanowisko:</label>
-            <input class="break" type="workplace" nbInput fullWidth status="info">
+            <input class="break" type="text" nbInput fullWidth status="info" formControlName="workplace">
+            <div class="redError" *ngIf="profileeForm.get('workplace')?.hasError('required') && showError">Pole musi być wypełmione</div>
             <br>
             <label class="label">Typ:</label>
-            <input class="break" type="type" nbInput fullWidth status="info">
-            <button type="submit">Dodaj</button>
+            <!-- <input class="break" type="type" nbInput fullWidth status="info"> -->
+            <nb-radio-group formControlName="typ">
+                <nb-radio *ngFor="let option of options" [value]="option.value">
+                  {{ option.label }}
+                </nb-radio>
+            </nb-radio-group> 
+            <div class="redError" *ngIf="profileeForm.get('typ')?.hasError('required') && showError">Należy wybrać jedną z opcji</div>
+         
+
+            <div id="bCreate"><button  type="submit" nbButton status="primary"  >Dodaj</button></div>
 
 
             <!-- <label class="label">Email:</label> <br>

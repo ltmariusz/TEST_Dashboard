@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     else{
       this.loginClick.emit({
         email: this.profileForm.get("email")!.value,
-        password:this.profileForm.get("password")!.value
+        password: this.profileForm.get("password")!.value
      })
      //this.loading=true
 

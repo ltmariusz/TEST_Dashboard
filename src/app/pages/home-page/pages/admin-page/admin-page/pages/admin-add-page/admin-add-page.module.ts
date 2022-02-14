@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminAddPageComponent } from './admin-add-page/admin-add-page.component';
 import { RouterModule, Routes } from '@angular/router';
-import { NbCardModule, NbInputModule } from '@nebular/theme';
+import { NbButtonModule, NbCardModule, NbInputModule, NbRadioModule } from '@nebular/theme';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes =[
   {path: '', component: AdminAddPageComponent}
@@ -16,7 +17,10 @@ const routes: Routes =[
     CommonModule,
     RouterModule.forChild(routes),
     NbCardModule,
-    NbInputModule
+    NbInputModule,
+    NbButtonModule,
+    NbRadioModule,
+    ReactiveFormsModule,
   ]
 })
 export class AdminAddPageModule { }

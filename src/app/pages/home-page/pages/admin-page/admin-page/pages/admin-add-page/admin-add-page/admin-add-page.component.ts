@@ -1,14 +1,16 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
+import { NewUserLoginData } from 'src/app/components/admin-add/admin-add/admin-add.component';
+import { AdminManagersService } from 'src/app/services/admin-managers/admin-managers.service';
 
-export interface NewUserLoginData{
-  firstName:string
-  surname:string
-  email:string
-  workplace:string
-  typ:number
-}
+// export interface NewUserLoginData{
+//   firstName:string
+//   surname:string
+//   email:string
+//   workplace:string
+//   typ:number
+// }
 
 
 @Component({
@@ -18,55 +20,64 @@ export interface NewUserLoginData{
 })
 export class AdminAddPageComponent implements OnInit {
 
-  @Input()
-  customError: string ="";
+  // @Input()
+  // customError: string ="";
 
-  @Output()
-  newUser: EventEmitter<NewUserLoginData> = new EventEmitter()
-
-
-
-  options = [
-    { value: 'Admin', label: 'Admin' },
-    { value: 'User', label: 'User' },
-  ];
+  // @Output()
+  // newUser: EventEmitter<NewUserLoginData> = new EventEmitter()
 
 
-  showError: boolean = false;
-  profileeForm = new FormGroup({
-    firstName: new FormControl('',[Validators.required]),
-    surname: new FormControl('',[Validators.required,]),
-    email: new FormControl('',[Validators.required, Validators.email]),
-    workplace: new FormControl('',Validators.required),
-    typ: new FormControl('',Validators.required),
-  });
+
+  // options = [
+  //   { value: 'Admin', label: 'Admin' },
+  //   { value: 'User', label: 'User' },
+  // ];
+
+
+  // showError: boolean = false;
+  // profileeForm = new FormGroup({
+  //   firstName: new FormControl('',[Validators.required]),
+  //   surname: new FormControl('',[Validators.required,]),
+  //   email: new FormControl('',[Validators.required, Validators.email]),
+  //   workplace: new FormControl('',Validators.required),
+  //   typ: new FormControl('',Validators.required),
+  // });
 
    
-  constructor() { }
+  constructor(
+    private adminManagersService: AdminManagersService,
+  ) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit() {
-    this.showError = false
-    this.customError = ""
+  // onSubmit() {
+  //   this.showError = false
+  //   this.customError = ""
 
-    if(this.profileeForm.invalid){
-      this.showError = true;
-    }
-    else{
-      this.newUser.emit({
-        firstName: this.profileeForm.get("firstName")!.value,
-        surname:this.profileeForm.get("surname")!.value,
-        email:this.profileeForm.get("email")!.value,
-        workplace:this.profileeForm.get("workplace")!.value,
-        typ:this.profileeForm.get("typ")!.value
+  //   if(this.profileeForm.invalid){
+  //     this.showError = true;
+  //   }
+  //   else{
+  //     this.newUser.emit({
+  //       firstName: this.profileeForm.get("firstName")!.value,
+  //       surname:this.profileeForm.get("surname")!.value,
+  //       email:this.profileeForm.get("email")!.value,
+  //       workplace:this.profileeForm.get("workplace")!.value,
+  //       typ:this.profileeForm.get("typ")!.value
 
-      })
-    }
-    // TODO: Use EventEmitter with form value
+  //     })
+  //   }
+  //   // TODO: Use EventEmitter with form value
     
-    //console.warn(this.profileeForm.value);
+  //   //console.warn(this.profileeForm.value);
+  // }
+//////////////////////////////////////////////////////////
+  getData(user: NewUserLoginData | undefined){
+    if(user){
+      //this.adminManagersService
+    }
+
   }
 
 }

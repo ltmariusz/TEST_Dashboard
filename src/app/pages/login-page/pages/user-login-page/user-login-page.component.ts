@@ -34,7 +34,6 @@ export class UserLoginPageComponent implements OnInit, OnDestroy {
       this.loginService.login(user.email, user.password)
       .then(res => {
         this.router.navigateByUrl('/pages')
-
       })
       .catch(e =>{
         this.customError = e

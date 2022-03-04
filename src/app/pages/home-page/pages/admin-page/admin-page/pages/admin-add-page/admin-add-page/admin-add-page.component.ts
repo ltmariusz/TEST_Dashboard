@@ -19,6 +19,7 @@ import { AdminManagersService } from 'src/app/services/admin-managers/admin-mana
   styleUrls: ['./admin-add-page.component.scss']
 })
 export class AdminAddPageComponent implements OnInit {
+  customError: string =""
 
   // @Input()
   // customError: string ="";
@@ -75,7 +76,15 @@ export class AdminAddPageComponent implements OnInit {
 //////////////////////////////////////////////////////////
   getData(user: NewUserLoginData | undefined){
     if(user){
-      //this.adminManagersService
+     this.adminManagersService.addNewUser(user.firstName, user.surname, user.email, user.workplace, user.type)
+     .then(res => {
+      return
+     })
+     .catch(e => {
+      this.customError = e
+     })
+    }else{
+      this.customError = "Niepoprawne dane"
     }
 
   }

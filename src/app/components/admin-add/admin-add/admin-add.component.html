@@ -29,12 +29,12 @@
                 <br>
                 <label class="label">Typ:</label>
                 <!-- <input class="break" type="type" nbInput fullWidth status="info"> -->
-                <nb-radio-group formControlName="typ">
+                <nb-radio-group formControlName="type">
                     <nb-radio *ngFor="let option of options" [value]="option.value">
                       {{ option.label }}
                     </nb-radio>
                 </nb-radio-group> 
-                <div class="redError" *ngIf="profileeForm.get('typ')?.hasError('required') && showError">Należy wybrać jedną z opcji</div>
+                <div class="redError" *ngIf="profileeForm.get('type')?.hasError('required') && showError">Należy wybrać jedną z opcji</div>
              
     
                 <div id="bCreate"><button  type="submit" nbButton status="primary"  >Dodaj</button></div>

@@ -7,7 +7,7 @@ export interface NewUserLoginData{
   surname:string
   email:string
   workplace:string
-  typ:number
+  type:string
 }
 
 
@@ -41,7 +41,7 @@ export class AdminAddComponent implements OnInit {
     surname: new FormControl('',[Validators.required,]),
     email: new FormControl('',[Validators.required, Validators.email]),
     workplace: new FormControl('',Validators.required),
-    typ: new FormControl('',Validators.required),
+    type: new FormControl('',Validators.required),
   });
 
 
@@ -63,8 +63,7 @@ export class AdminAddComponent implements OnInit {
         surname:this.profileeForm.get("surname")!.value,
         email:this.profileeForm.get("email")!.value,
         workplace:this.profileeForm.get("workplace")!.value,
-        typ:this.profileeForm.get("typ")!.value
-
+        type:this.profileeForm.get("type")!.value
       })
     }
     // TODO: Use EventEmitter with form value

@@ -18,9 +18,10 @@ export class AdminManagersService {
 
     try{
       let result = await lastValueFrom(this.adminManagersRestService.postAddNewUser(name,surname,email,workplace,type))
-
+      console.log(result.body)
+      console.log(name)
     }catch (error){
-
+      console.log(error)
       
     }
   }

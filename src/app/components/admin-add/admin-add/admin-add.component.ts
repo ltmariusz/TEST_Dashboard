@@ -24,6 +24,9 @@ export class AdminAddComponent implements OnInit {
   @Input()
   customError: string ="";
 
+  @Input()
+  reset: boolean = false; // zmienna odpowiadajaca za restowanie formularza 
+
   @Output()
   newUser: EventEmitter<NewUserLoginData> = new EventEmitter()
 

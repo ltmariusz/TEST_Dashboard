@@ -1,49 +1,6 @@
 <nb-card>
     <nb-card-header>Kotna Użytkowników</nb-card-header>
     <nb-card-body>
-
-
-
-        <table class="table">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Imie</th>
-                <th scope="col">Nazwisko</th>
-                <th scope="col">Email</th>
-                <th scope="col">Stanowsko</th>
-                <th scope="col">Typ użytkownika</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Imie</td>
-                <td>Nazwisko</td>
-                <td>Email</td>
-                <td>Stanowsko</td>
-                <td>Typ użytkownika</td>
-              </tr>
-              <tr>
-                <th>2</th>
-                <td>Imie</td>
-                <td>Nazwisko</td>
-                <td>Email</td>
-                <td>Stanowsko</td>
-                <td>Typ użytkownika</td>
-              </tr>
-              <tr>
-                <th>3</th>
-                <td>Imie</td>
-                <td>Nazwisko</td>
-                <td>Email</td>
-                <td>Stanowsko</td>
-                <td>Typ użytkownika</td>
-              </tr>
-            </tbody>
-          </table>
-
-
           <table class="table">
             <thead class="thead-dark">
               <tr>
@@ -56,15 +13,13 @@
               </tr>
             </thead>
             <tbody>
-              <!-- <tr *ngFor="let item of data"> -->
-              <tr>
-                <th scope="row">1</th>
-                <td>{{id}}</td>
-                <td>Nazwisko</td>
-                <td>Email</td>
-                <td>Stanowsko</td>
-                <td>Typ użytkownika</td>
-              </tr>
+              <tr *ngFor="let user of userList">
+                 <td>{{user.id}}</td>
+                 <td>{{user.firstName}}</td>
+                 <td>{{user.surname}}</td>
+                 <td>{{user.email}}</td>
+                 <td>{{user.workplace}}</td>
+                 <td>{{user.type}}</td> 
             </tbody>
           </table>
     </nb-card-body>

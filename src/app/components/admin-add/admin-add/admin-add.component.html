@@ -2,10 +2,8 @@
     <nb-card>
         <nb-card-header>Dodaj Nowego użytkownika</nb-card-header>
         <!-- <nb-card-body [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerSize="giant">  -->
-        <nb-card-body nbSpinnerStatus="primary" nbSpinnerSize="giant"> 
-            
-            <!-- <form [formGroup]="profileForm" (ngSubmit)="onSubmit()"> -->
-            <!-- <form [formGroup]="profileForm"> -->
+        <nb-card-body [nbSpinner]="loading" nbSpinnerStatus="primary" nbSpinnerSize="giant"> 
+    
             <form [formGroup]="profileeForm" (ngSubmit)="onSubmit()">
                 <label class="label">Imię:</label>
                 <input class="break" type="name" nbInput fullWidth status="info" formControlName="firstName">
@@ -28,7 +26,7 @@
                 <div class="redError" *ngIf="profileeForm.get('workplace')?.hasError('required') && showError">Pole musi być wypełmione</div>
                 <br>
                 <label class="label">Typ:</label>
-                <!-- <input class="break" type="type" nbInput fullWidth status="info"> -->
+
                 <nb-radio-group formControlName="type">
                     <nb-radio *ngFor="let option of options" [value]="option.value">
                       {{ option.label }}

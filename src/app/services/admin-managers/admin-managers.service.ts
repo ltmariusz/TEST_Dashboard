@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { resourceLimits } from 'worker_threads';
-import { AdminManagersRestService } from '../rest-controllers/admin-managers-rest.service';
+//import { resourceLimits } from 'worker_threads';
+import { AdminManagersRestService, UserData } from '../rest-controllers/admin-managers-rest.service';
 
 
 
@@ -25,7 +25,14 @@ export class AdminManagersService {
 
 
 
-  
+  /**
+   * Dodawanie nowego urzytkownika do tablicy "admin/lista"
+   * @param name 
+   * @param surname 
+   * @param email 
+   * @param workplace 
+   * @param type 
+   */
   async addNewUser(name: string, surname: string, email: string, workplace: string, type: string){
 
     try{
@@ -38,23 +45,29 @@ export class AdminManagersService {
     }
   }
 
-
-  //Nowa funkcja ktora bedzie obierac dane od Rest servica, nadawac je do zmiennej 
-  //a nastpenie  przekierowywac do komponentu który bedzie wyswietlal te dane
-  //za pomoca NgFor (w zaleznosci od rekordow)
-  // async list(id: number, firstName: string, surname: string, email: string, workplace: string, type: string){
-  async list(){
-    try{
-      let result = await lastValueFrom(this.adminManagersRestService.getUsersList())
-      return result.body?.list
-    }
-    catch(error){
-      console.log(error)
-      return 
-    }
-
+  listV2():Promise<Array<UserData>>{
+    return new Promise(async (resolve, reject) =>{
+      try {
+        let result = await lastValueFrom(this.adminManagersRestService.getUsersList())
+        if (result.body) {
+          resolve(result.body.list)
+        }else{
+          reject("Błąd parsowania danych")
+        }
+      } catch (error) {
+        reject(error)
+      }
+    })
   }
-
+/**
+ * przypisanie danych do wyświetlanej tablicy z aktualnymi zarejestrowanymi goscimi "admin/dodawanie"
+ * @param id 
+ * @param firstName 
+ * @param surName 
+ * @param email 
+ * @param workplace 
+ * @param type 
+ */
   setData(id: number, firstName: string, surName: string, email: string, workplace: string, type: string){
     this.id = id
     this.firstName = firstName

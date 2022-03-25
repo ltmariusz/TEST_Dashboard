@@ -8,7 +8,7 @@ export interface GetUsersListResponseBody{
 }
 
 export interface UserData{
-  id: number,
+  id: number
   firstName:string
   surname:string
   email:string

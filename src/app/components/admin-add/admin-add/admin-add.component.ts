@@ -24,8 +24,12 @@ export class AdminAddComponent implements OnInit {
   @Input()
   customError: string ="";
 
+
   @Input()
-  reset: boolean = false; // zmienna odpowiadajaca za restowanie formularza
+  loading: boolean = false;
+  
+  // @Input()
+  // reset: boolean = false; // zmienna odpowiadajaca za restowanie formularza
 
   @Output()
   newUser: EventEmitter<NewUserLoginData> = new EventEmitter()
@@ -57,6 +61,11 @@ export class AdminAddComponent implements OnInit {
     this.showError = false
     this.customError = ""
 
+
+
+    /**
+     * Funkcja pobierania danych z formularza
+     */
     if(this.profileeForm.invalid){
       this.showError = true;
     }
@@ -68,6 +77,7 @@ export class AdminAddComponent implements OnInit {
         workplace:this.profileeForm.get("workplace")!.value,
         type:this.profileeForm.get("type")!.value
       })
+      this.profileeForm.reset()
     }
     // TODO: Use EventEmitter with form value
     //console.warn(this.profileeForm.value);

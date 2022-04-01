@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
 import { NewUserLoginData } from 'src/app/components/admin-add/admin-add/admin-add.component';
 import { AdminManagersService } from 'src/app/services/admin-managers/admin-managers.service';
+import { Subscription } from 'rxjs';
 
 // export interface NewUserLoginData{
 //   firstName:string
@@ -19,7 +20,8 @@ import { AdminManagersService } from 'src/app/services/admin-managers/admin-mana
   styleUrls: ['./admin-add-page.component.scss']
 })
 export class AdminAddPageComponent implements OnInit {
-  customError: string =""
+  customError: string = ""
+  loading: boolean = false
 
   // @Input()
   // customError: string ="";
@@ -74,7 +76,12 @@ export class AdminAddPageComponent implements OnInit {
   //   //console.warn(this.profileeForm.value);
   // }
 //////////////////////////////////////////////////////////
-  getData(user: NewUserLoginData | undefined){
+  
+/**
+ * Pobieranie danych od urzytkownika 
+ * @param user 
+ */
+getData(user: NewUserLoginData | undefined){
     if(user){
      this.adminManagersService.addNewUser(user.firstName, user.surname, user.email, user.workplace, user.type)
      .then(res => {
@@ -87,6 +94,14 @@ export class AdminAddPageComponent implements OnInit {
       this.customError = "Niepoprawne dane"
     }
 
+  }
+
+  private addingUserSubscription: Subscription | null = null;
+  private addingUserProcess(){
+    if (this.loading){
+
+
+    }
   }
 
 }

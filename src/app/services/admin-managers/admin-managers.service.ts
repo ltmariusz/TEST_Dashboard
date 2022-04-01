@@ -1,8 +1,15 @@
 import { Injectable } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
+import { BehaviorSubject, lastValueFrom } from 'rxjs';
 //import { resourceLimits } from 'worker_threads';
 import { AdminManagersRestService, UserData } from '../rest-controllers/admin-managers-rest.service';
 
+
+export enum AdminStatus{
+  SUCCESS,
+  LOADING,
+  ERROR,
+  PENDING
+ }
 
 
 @Injectable({
@@ -10,12 +17,21 @@ import { AdminManagersRestService, UserData } from '../rest-controllers/admin-ma
 })
 export class AdminManagersService {
 
+  adminProcessStatusSubject = new BehaviorSubject(AdminStatus.PENDING)
+  private _adminProcessStatus: AdminStatus = AdminStatus.PENDING
+  private get adminProcessStatus():AdminStatus{
+    return this._adminProcessStatus
+  }
+// private set 
+
+  
   private id?: number
   private firstName?: string
   private surName?: string
   private email?: string
   private workplace?: string
   private type?: string
+
 
 
   
@@ -59,6 +75,7 @@ export class AdminManagersService {
       }
     })
   }
+
 /**
  * przypisanie danych do wyświetlanej tablicy z aktualnymi zarejestrowanymi goscimi "admin/dodawanie"
  * @param id 
@@ -75,9 +92,9 @@ export class AdminManagersService {
     this.email = email
     this.workplace = workplace
     this.type= type
-
-
   }
 
-  
+
+
+
 }

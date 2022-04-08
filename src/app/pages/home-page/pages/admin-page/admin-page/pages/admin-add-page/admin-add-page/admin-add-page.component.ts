@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
 import { NewUserLoginData } from 'src/app/components/admin-add/admin-add/admin-add.component';
-import { AdminManagersService } from 'src/app/services/admin-managers/admin-managers.service';
+import { AdminManagersService, AdminStatus } from 'src/app/services/admin-managers/admin-managers.service';
 import { Subscription } from 'rxjs';
 
 // export interface NewUserLoginData{
@@ -51,7 +51,12 @@ export class AdminAddPageComponent implements OnInit {
     private adminManagersService: AdminManagersService,
   ) { }
 
+  ngOnDestroy(): void {
+    this.addingUserSubscription?.unsubscribe()    
+  }
+
   ngOnInit(): void {
+    this.addingUserProcess()
   }
 
   // onSubmit() {
@@ -78,7 +83,7 @@ export class AdminAddPageComponent implements OnInit {
 //////////////////////////////////////////////////////////
   
 /**
- * Pobieranie danych od urzytkownika 
+ * Pobieranie danych od uzytkownika 
  * @param user 
  */
 getData(user: NewUserLoginData | undefined){
@@ -93,15 +98,31 @@ getData(user: NewUserLoginData | undefined){
     }else{
       this.customError = "Niepoprawne dane"
     }
-
   }
+
 
   private addingUserSubscription: Subscription | null = null;
   private addingUserProcess(){
-    if (this.loading){
+    this.addingUserSubscription = this.adminManagersService.adminProcessStatusSubject
+    .subscribe(res =>{
+      switch (res) {
+        case AdminStatus.PENDING:
+          console.log(AdminStatus.PENDING)
+          break;
+        case AdminStatus.LOADING:
+          console.log(AdminStatus.LOADING)
+          this.loading = true
+          break;
+        case AdminStatus.SUCCESS:
+          
+          console.log(res)
 
-
-    }
+          break;
+        case AdminStatus.ERROR:
+          console.log(res)
+          this.loading = false
+          break;
+      }
+    })
   }
-
 }

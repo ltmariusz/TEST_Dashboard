@@ -12,7 +12,6 @@ export interface NewUserLoginData{
 
 
 
-
 @Component({
   selector: 'app-admin-add',
   templateUrl: './admin-add.component.html',

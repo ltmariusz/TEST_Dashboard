@@ -17,12 +17,21 @@ export enum AdminStatus{
 })
 export class AdminManagersService {
 
+
+  /**
+   * CO KONKRETNIE SIE TUTAJ DZIEJE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   */
   adminProcessStatusSubject = new BehaviorSubject(AdminStatus.PENDING)
+
   private _adminProcessStatus: AdminStatus = AdminStatus.PENDING
   private get adminProcessStatus():AdminStatus{
     return this._adminProcessStatus
   }
-// private set 
+  private set adminProcessStatus(value: AdminStatus){
+    this._adminProcessStatus = value
+    this.adminProcessStatusSubject.next(value)
+  }
+ 
 
   
   private id?: number
@@ -50,17 +59,33 @@ export class AdminManagersService {
    * @param type 
    */
   async addNewUser(name: string, surname: string, email: string, workplace: string, type: string){
+    //jesli oczekujemy ma klikniecie przycisku to prgram ma się nie wykonywać
+    if(this.adminProcessStatus != AdminStatus.PENDING){return}
+    this.adminProcessStatus = AdminStatus.LOADING
 
     try{
       let result = await lastValueFrom(this.adminManagersRestService.postAddNewUser(name,surname,email,workplace,type))
-      console.log(result.body)
-      console.log(name)
+      if(result.body == null)
+      {
+        this.adminProcessStatus= AdminStatus.ERROR
+        return
+      }
+
+      this.adminProcessStatus = AdminStatus.SUCCESS
+
+      // testowanie pobierania danych z formularza
+      // console.log(result.body)
+      // console.log(name)
     }catch (error){
       console.log(error)
-      
+      this.adminProcessStatus = AdminStatus.ERROR
     }
   }
 
+/**
+ * wyświetlanie urzytkowników w komponencie "admin/list"
+ * @returns 
+ */
   listV2():Promise<Array<UserData>>{
     return new Promise(async (resolve, reject) =>{
       try {
@@ -76,8 +101,9 @@ export class AdminManagersService {
     })
   }
 
+  
 /**
- * przypisanie danych do wyświetlanej tablicy z aktualnymi zarejestrowanymi goscimi "admin/dodawanie"
+ * przypisanie danych do wyświetlanej tablicy z aktualnymi zarejestrowanymi goscmi "admin/dodawanie"
  * @param id 
  * @param firstName 
  * @param surName 
@@ -93,8 +119,5 @@ export class AdminManagersService {
     this.workplace = workplace
     this.type= type
   }
-
-
-
 
 }

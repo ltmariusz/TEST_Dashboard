@@ -1,4 +1,4 @@
-# PHUPZaproszenie
+# TESTDashboard 
 ## Co Zainstalować 
 Node.js
 Angular/cli

@@ -33,9 +33,9 @@ export class UserRestService {
   getUserData(token:string):Observable<HttpResponse<GetUserResponseData>>{
     return of(new HttpResponse({
       body:{
-        name: "Arkadiusz",
-        surnmae: "Bryska",
-        email: "arkadiusz.bryska@daw-systems.pl",
+        name: "Mariusz",
+        surnmae: "Lemanski",
+        email: "mariusz.lemanski@firma.com",
       },
       status: 200,
     })).pipe(delay(200))
